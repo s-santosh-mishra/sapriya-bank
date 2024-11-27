@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sapriya Bank</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css  ">
+    <link rel="shortcut icon" href="favicon-16x16.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    </style>
+</head>
+
+<body id="body">
+    <div class="top flex">
+        <img src="favicon-32x32.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>SAPRIYA BANK, India</span>
+    </div>
+    <main class="flex">
+
+        <div class="conatiner " id="conatiner">
+
+
+            <section>
+                <div class="name">
+                    <label for="money">Enter A/C holders Name :</label><br>
+                    <input type="text" id="name" placeholder="Enter A/C holders Name">
+                </div>
+
+                <div class="acno">
+                    <label for="acnoo">Enter A/C no :</label><br>
+                    <input type="number" id="acnoo" placeholder="Enter Account number">
+                </div>
+
+                <div class="no">
+                    <label for="bala">Enter your account balance : </label><br>
+                    <input type="number" id="bala" placeholder="Enter your account balance">
+                </div>
+
+                <div class="isc">
+                    <label for="money">Enter the amount to be deposited or Withdrawn :</label><br>
+                    <input type="number" id="money" placeholder="Enter the amount">
+                </div>
+            </section>
+
+            <section class="do">
+
+                <button id="dep">
+                    Deposit
+                </button>
+
+                <button id="withd">
+                    Withdraw
+                </button>
+
+            </section>
+
+
+        </div>
+        <div class="details" id="details">
+            <p class="detailed">Thank You For Using Our Services</p>
+            <p class="detailed">Visit again...💖</p><br>
+            <p id="mes"></p>
+            <p>Your details are</p>
+            <p>Name : <span id="fname"></span></p>
+            <p>Ac no : <span id="fac"></span></p>
+            <p>Ac bal : <span id="fbal"></span></p>
+            <button style="margin-top: 50px;">
+                <a href="index.html">Home page</a>
+            </button>
+        </div>
+    </main>
+    <script>
+
+        let withd = document.getElementById("withd")
+        withd.addEventListener("click", () => {
+            let balance = parseInt(document.getElementById("bala").value)
+            let amount = parseInt(document.getElementById("money").value)
+
+            if (amount >= balance) {
+                alert("sorry! Your Account has not enough Balance..")
+            }
+
+                else {
+                    balance -= amount
+                    let tohide = document.getElementById("conatiner")
+                    tohide.classList.toggle("container2")
+                    let toshow = document.getElementById("details")
+                    toshow.classList.toggle("details2")
+                }
+
+
+                let name = document.getElementById("name").value
+                let acno = document.getElementById("acnoo").value
+
+                let fname = document.getElementById("fname")
+                let fac = document.getElementById("fac")
+                let fbal = document.getElementById("fbal")
+                let mes=document.getElementById("mes")
+
+                mes.innerHTML="rs "+amount+" Withdrawn successfully"
+                fbal.innerHTML = balance
+                fname.innerHTML = name
+                fac.innerHTML = acno
+        })
+
+        let dep = document.getElementById("dep")
+        dep.addEventListener("click", () => {
+            let balance = parseInt(document.getElementById("bala").value)
+            let amount = parseInt(document.getElementById("money").value)
+            if (amount > 100000) {
+                alert("Maximum Deposit Upto 1 Lakh is allowed")
+            }
+            else {
+                balance += amount
+                tohide = document.getElementById("conatiner")
+                tohide.classList.toggle("container2")
+                toshow = document.getElementById("details")
+                toshow.classList.toggle("details2")
+            }
+
+
+            let name = document.getElementById("name").value
+            let acno = document.getElementById("acnoo").value
+
+            let fname = document.getElementById("fname")
+            let fac = document.getElementById("fac")
+            let fbal = document.getElementById("fbal")
+            let mes = document.getElementById("mes")
+
+            mes.innerHTML = "rs " + amount + " Deposited successfully"
+            fbal.innerHTML = balance
+            fname.innerHTML = name
+            fac.innerHTML = acno
+
+        })
+
+
+    </script>
+</body>
+
+</html>
